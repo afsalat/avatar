@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Avatars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        .avatar-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        .avatar-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 180px;
+            transition: transform 0.3s ease;
+        }
+        .avatar-item:hover {
+            transform: scale(1.05);
+        }
+        .avatar-item img {
+            border-radius: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+        .avatar-item a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        .avatar-item a:hover {
+            text-decoration: underline;
+        }
+        .cartoon-image {
+            margin-top: 10px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+        .no-cartoon {
+            margin-top: 10px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<h1>All Avatars</h1>
+<div class="avatar-list">
+    {% for avatar in avatars %}
+        <div class="avatar-item">
+            <a href="{% url 'view_avatar' avatar.id %}">
+                Avatar {{ avatar.id }}
+            </a><br>
+            <img src="{{ avatar.image.url }}" alt="Original Avatar {{ avatar.id }}" width="120"><br>
+            
+            {% if avatar.cartoon_img %}
+                <img src="{{ avatar.cartoon_img.url }}" alt="Cartoon Avatar {{ avatar.id }}" class="cartoon-image" width="120">
+            {% else %}
+                <p class="no-cartoon">No cartoon image available.</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

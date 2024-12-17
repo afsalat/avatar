@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Avatar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 40px;
+        }
+
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        .avatar-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .avatar-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-description {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .image-description a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .image-description a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>View Avatar</h1>
+
+<div class="avatar-container">
+    <!-- Original Image -->
+    <div class="image-container">
+        <h2>Original Avatar</h2>
+        <img class="avatar-image" src="{{ avatar.image.url }}" alt="Original Image">
+        <div class="image-description">
+            <p>Click to <a href="{{ avatar.image.url }}" target="_blank">view full-size image</a>.</p>
+        </div>
+    </div>
+
+
+
+
+    <!-- Cartoon Image -->
+    <div class="image-container">
+        <h2>Cartoon Avatar</h2>
+        <img class="avatar-image" src="{{ avatar.cartoon_img.url }}" alt="Cartoon Image">
+        <div class="image-description">
+            <p>Click to <a href="{{ avatar.cartoon_img.url }}" target="_blank">view full-size image</a>.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
